@@ -1,4 +1,5 @@
 #include "tinygl-cpp.h"
+# define M_PI  3.14159265358979323846
 
 using namespace tinygl;
 class MyWindow : public Window {
@@ -12,20 +13,28 @@ class MyWindow : public Window {
     void draw() override {
       background(0.2f, 0.2f, 0.2f); // parameters: r, g, b
 
-      color(0.5, 1.0, 0.25);   // parameters: r, g, b
-      circle(50, 30, 100); // parameters: x, y, radius
-      circle(50, 30, 100); // parameters: x, y, radius
-      square(300, 150, 200, 50); // parameters: x, y, width, height
-
-      color(1, 0, 0, 0.5);
-      triangle(350, 150, 50, 100);
-
-      color(1, 0, 1, 0.5);
-      ellipsoid(150, 350+25*sin(elapsedTime()), 100, 100);
+      double r = 80;
+      int N = 60;
+      float cx = 200;
+      float cy = 280 + 30*sin(2*M_PI*elapsedTime());
+      color(1.0, 1.0, 1.0);
+      for (int i = 0; i < N; i++) {
+          double t = M_PI*0.2 + i*M_PI*(1.3)/N;
+          float x = cx + r*cos(t);
+          float y = cy + r*sin(t);
+          circle(x, y, 5);
+      }
+      cy -= 2*r;
+      for (int i = 0; i < N; i++) {
+          double t = M_PI/2 - i*M_PI*1.3/N;
+          float x = cx + r*cos(t);
+          float y = cy + r*sin(t);
+          circle(x, y, 5);
+      }
     }
 };
 
 int main() {
-  MyWindow window(500, 500);
+  MyWindow window(400, 400);
   window.run();
 }

@@ -46,5 +46,5 @@ elseif (UNIX)
 
 endif()
 
-add_executable(tinygl-example main.cpp)
-target_link_libraries(tinygl-example ${CORE})
+add_executable(mysteryletter main.cpp)
+target_link_libraries(mysteryletter ${CORE})

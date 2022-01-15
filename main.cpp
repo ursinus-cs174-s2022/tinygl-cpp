@@ -17,8 +17,8 @@ class MyWindow : public Window {
       int N = 60;
       float cx = 200;
       float cy = 280 + 30*sin(2*M_PI*elapsedTime());
-      color(1.0, 1.0, 1.0);
       for (int i = 0; i < N; i++) {
+          color(1.0, (float)i/N, 1.0);
           double t = M_PI*0.2 + i*M_PI*(1.3)/N;
           float x = cx + r*cos(t);
           float y = cy + r*sin(t);
@@ -26,6 +26,7 @@ class MyWindow : public Window {
       }
       cy -= 2*r;
       for (int i = 0; i < N; i++) {
+          color(1.0, 1.0, 1.0-(float)i/N);
           double t = M_PI/2 - i*M_PI*1.3/N;
           float x = cx + r*cos(t);
           float y = cy + r*sin(t);
